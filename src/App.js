@@ -1,11 +1,9 @@
-import logo from './logo.svg';
 import './App.css';
+import AppRouting from './AppRouting';
 
 function App() {
   return (
-    <div>
-
-    </div>
+    <AppRouting />
   );
 }
 
