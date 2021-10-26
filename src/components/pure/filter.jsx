@@ -9,7 +9,7 @@ const Filter = () => {
 			<div class="w-full">
 				<form>
 					<div className="mb-4 w-full text-center">
-						<input className="mx-auto shadow appearance-none border rounded w-64 py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Look for..." />
+						<input className="mx-auto shadow appearance-none border rounded w-64 py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Temporary {filter}..." />
 					</div>
 				</form>
 			</div>
