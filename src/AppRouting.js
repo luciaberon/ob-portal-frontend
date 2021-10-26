@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Header from './components/container/header'
 
 import JobDetailspage from './pages/jobs/JobDetailspage';
 import Jobspage from './pages/jobs/Jobspage';
@@ -14,7 +15,7 @@ function AppRouting() {
         <Switch> 
             {/* Empty Route */}
             <Route exact path="/">
-                <h1>Bienvenidos al proyecto de React de Open Bootcamp</h1>
+                <Header></Header>
             </Route>
             {/* Job details Route */}
             <Route exact path='/ofertas/:id' component={ JobDetailspage} />
