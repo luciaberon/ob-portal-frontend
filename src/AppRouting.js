@@ -15,7 +15,7 @@ function AppRouting() {
         <Switch> 
             {/* Empty Route */}
             <Route exact path="/">
-                <Header></Header>
+                <div className="bg-gray-100"><Header></Header></div>
             </Route>
             {/* Job details Route */}
             <Route exact path='/ofertas/:id' component={ JobDetailspage} />

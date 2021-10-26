@@ -42,7 +42,9 @@ const Header = () => {
 				<LogoHeader></LogoHeader>
 				<NavbarHeader></NavbarHeader>
 			</div>
-			<Filter></Filter>
+			<div>
+				<Filter></Filter>
+			</div>
 			</nav>
 		</header>
 	);
