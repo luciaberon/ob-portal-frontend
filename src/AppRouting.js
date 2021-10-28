@@ -4,7 +4,7 @@ import Header from './components/container/header'
 import JobDetailspage from './pages/jobs/JobDetailspage';
 import Jobspage from './pages/jobs/Jobspage';
 import Notfoundpage from './pages/404/Notfoundpage';
-import Job from './components/pure/job';
+import Job from './components/container/job';
 
 
 function AppRouting() {
@@ -22,7 +22,7 @@ function AppRouting() {
             {/* Temporary route to see job component */}
             <Route exact path="/offer"><Job></Job></Route>
             {/* Job details Route */}
-            <Route exact path='/ofertas/:id' component={ JobDetailspage} />
+            <Route exact path='/ofertas/:id' component={ JobDetailspage } />
             {/* Jobs Route */}
             <Route path='/ofertas' component={ Jobspage } />
 
