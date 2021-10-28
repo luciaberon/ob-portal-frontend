@@ -1,4 +1,4 @@
-export class Job {
+export default class Offer {
     id = '';
     technologies = '';
     company = '';
@@ -6,6 +6,7 @@ export class Job {
     vacancies = '';
     minSalary = '';
     maxSalary = '';
+    location = '';
     modality = '';
     experience = '';
     title = '';
@@ -14,7 +15,7 @@ export class Job {
     publicationDate = '';
     processStatus = ''
 
-    constructor(id, technologies, company, description, vacancies, minSalary, maxSalary, modality, experience, title, category, contractType, publicationDate, processStatus) {
+    constructor(id, technologies, company, description, vacancies, minSalary, maxSalary, location, modality, experience, title, category, contractType, publicationDate, processStatus) {
        
         this.id = id;
         this.technologies = technologies;
@@ -23,6 +24,7 @@ export class Job {
         this.vacancies = vacancies;
         this.minSalary = minSalary;
         this.maxSalary = maxSalary;
+        this.location = location;
         this.modality = modality;
         this.experience = experience;
         this.title = title;
