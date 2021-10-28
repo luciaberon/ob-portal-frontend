@@ -1,15 +1,22 @@
-import axios from 'axios';
-
-const URL = "https://ob-proyecto-equipo1.herokuapp.com/api/ofertas";
+import http from '../utils/config/axios.config';
 
 // Obtain all Offers
 export const getAllOffers = () => {
-    return axios.get(URL);
+    return http.get('/ofertas');
 } 
 
 // Obtain Offer by ID
 export const getOfferByID = (id) => {
-    return axios.get(`${URL}/${id}`);
+    return http.get(`/ofertas/${id}`);
 } 
 
 
+// Obtain Technologies
+export const getTechnologies = () => {
+    return http.get('/tecnologias');
+}
+
+// Add Technoglies
+export const addTechnologies = data => {
+    return http.post('/tecnologias', data)
+}
