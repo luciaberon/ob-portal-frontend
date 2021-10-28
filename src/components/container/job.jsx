@@ -7,7 +7,7 @@ import JobDetails from './job_details';
 
 
 
-const Job = () => {
+const Job = (job) => {
 
     const [view, setView] = useState("hidden");
 
@@ -27,7 +27,7 @@ const Job = () => {
                 <Button />
             </div>
         <div className={`p-4 border rounded-lg ${view}`}>
-            <JobDetails />
+                <JobDetails />
         </div>
 
         </div>
