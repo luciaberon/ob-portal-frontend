@@ -3,7 +3,7 @@ import Header from './components/container/header'
 
 import Jobspage from './pages/jobs/Jobspage';
 import Notfoundpage from './pages/404/Notfoundpage';
-import Job from './components/container/job';
+import JobDetailspage from './pages/jobs/JobDetailspage';
 
 
 function AppRouting() {
@@ -17,13 +17,17 @@ function AppRouting() {
             <Route exact path="/">
                 <div className="bg-gray-100"><Header></Header></div>
             </Route>
+             {/* Individual Job Route */}
+           <Route 
+              path='/ofertas/:id'
+              render = {
+                ({match}) => (<JobDetailspage id={match.params.id} />)
+              }
+            >
 
-            {/* Temporary route to see job component */}
-            <Route exact path="/offer"><Job></Job></Route>
-
+            </Route>
             {/* Jobs Route */}
             <Route path='/ofertas' component={ Jobspage } />
-
             {/* 404 - Page No Found */}
             <Route component={ Notfoundpage } />
         </Switch>
