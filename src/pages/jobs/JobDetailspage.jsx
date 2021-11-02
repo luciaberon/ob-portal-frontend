@@ -1,9 +1,11 @@
-import React from 'react'
+import React from 'react';
+import JobDetails from '../../components/container/job_details';
 
-export default function JobDetailspage() {
+const JobDetailspage = ({id}) => {
+    console.log("ID",id)
     return (
-        <div>
-            <h1>Job details page</h1>
-        </div>
-    )
+        <JobDetails id={id}/>
+    );
 }
+
+export default JobDetailspage;

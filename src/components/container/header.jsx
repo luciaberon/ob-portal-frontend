@@ -36,7 +36,7 @@ const NavbarHeader = () => {
 
 const Header = () => {
 	return (
-		<header>
+		<header className="bg-landscape">
 			<nav>
 			<div className="flex items-center justify-between flex-nowrap bg-teal p-6">
 				<LogoHeader></LogoHeader>

@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+
+.align-center {
+    align-self: center;
+}
+
+.flex {
+    display:flex;
+}
+
+.text-medium {
+    font-size: 17px;
+}
+
+.details {
+    font-family: 'Roboto';
+    width: 70%;
+}
+
+.title {
+    font-family: 'Varela Round';
+}
