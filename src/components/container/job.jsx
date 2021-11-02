@@ -1,38 +1,43 @@
 import React, { useState } from 'react';
-import Section from '../pure/section';
-import Button from '../pure/apply_button'
-import AgeOfOffer from '../pure/age_section';
-import Technologies from '../pure/technologies';
-import JobDetails from './job_details';
+import Image from '../pure/company_logo';
+import Company from '../pure/company_name'
+import Position from '../pure/job_position';
+import Badges from '../pure/badges';
+import Technologies from '../pure/job_technologies';
+import AgeOfOffer from '../pure/age_of_offer';
+import Button from '../pure/apply_button';
 
-
-
-const Job = (job) => {
-
-    const [view, setView] = useState("hidden");
-
-    const updateView = () => {
-        const change = (view === "hidden" ? "block" : "hidden");
-        setView(change);
-    }
-
+/**
+ * Job
+ * @returns Container of components with information of the job
+ */
+const Job = ({offer}) => {
+   
+    const { urlImagen, nombre, empresa, salarioMaximo, salarioMinimo, tecnologias, fechaPublicacion, localidad } = offer || {};
     
-
     return (
-        <div className="collapsible select-none max-w-lg lg:max-w-screen-lg mx-auto md:max-w-2xl p-8">
-            <div onClick={updateView} className="max-w-lg hover:bg-gray-100 cursor-pointer lg:max-w-screen-lg flex bg justify-between rounded-xl shadow-md overflow-hidden md:max-w-2xl p-8 space-x-5">
-                <Section/>
-                <Technologies />
-                <AgeOfOffer />
+        <div className="collapsible select-none max-w-xl lg:max-w-screen-xl mx-auto md:max-w-3xl p-5">
+            <div className="max-w-lg hover:bg-gray-100 cursor-pointer lg:max-w-screen-lg flex bg justify-between rounded-xl border overflow-hidden md:max-w-2xl p-5">
+
+                <Image image={urlImagen.length > 0 ? urlImagen : "https://remoteok.io/assets/img/jobs/376af38d16bf762263aef1f70ed885ef1633445669.png?1633445670"}/>
+                <div className="space-y-1 lg:w-64">
+                    <Company company={empresa} />
+                    <Position position={nombre} />
+                    <Badges 
+                        location={localidad}
+                        minSalary={salarioMinimo}
+                        maxSalary={salarioMaximo}
+                    />
+                </div>
+
+                <Technologies technologies={tecnologias}/>
+                <AgeOfOffer date={fechaPublicacion} />
                 <Button />
+
             </div>
-        <div className={`p-4 border rounded-lg ${view}`}>
-                <JobDetails />
-        </div>
 
         </div>
     )
 }
-
 
 export default Job;

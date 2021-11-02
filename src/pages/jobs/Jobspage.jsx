@@ -1,9 +1,12 @@
 import React from 'react'
+import JobsList from '../../components/container/jobs_list'
 
+/**
+ * Jobspage
+ * @returns JobsList component
+ */
 export default function Jobspage() {
     return (
-        <div>
-            <h1>List of jobs here</h1>
-        </div>
+        <JobsList />
     )
 }

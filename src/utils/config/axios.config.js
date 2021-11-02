@@ -1,11 +1,13 @@
 import axios from "axios";
 
-const URL = "https://ob-proyecto-equipo1.herokuapp.com/api";
 
+// axios config for api requests
+
+const URL = "https://proyecto-ofertas-ob.herokuapp.com/api";
 
 export default axios.create({
   baseURL: URL,
-  headers: {
-    "Content-type": "application/json"
+  headers: { 
+    'accept': '*/*'
   }
 });
