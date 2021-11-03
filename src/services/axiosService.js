@@ -8,7 +8,6 @@ export const getAllOffers = () => {
 
 // Obtain Offer by ID
 export const getOfferByID = (id) => {
-    console.log("request",id)
     return http.get(`/ofertas/${id}`);
 } 
 

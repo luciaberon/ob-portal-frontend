@@ -4,9 +4,9 @@
  */
 const Position = ({position}) => {
     return (
-        <a href="#" className="block mt-1 leading-tight text-medium font-medium text-black hover:underline">
+        <span className="block mt-1 leading-tight text-medium font-medium text-black hover:underline">
             {position}
-        </a>
+        </span>
     )
 }
 

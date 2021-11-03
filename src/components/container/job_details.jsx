@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { retrieveOfferById } from '../../features/offers/offersSlice';
 
 const JobDetails = ({id}) => {
 
     const [offer, setOffer] = useState({});
+    const history = useHistory();
     const [loading, isLoading] = useState(true);
     const dispatch = useDispatch()
 
     useEffect(async() => {
         const i = await dispatch(retrieveOfferById(id));
-        setOffer(i.payload)        
+        setOffer(i.payload) 
         isLoading(false)
     }, []);
 
@@ -20,7 +22,7 @@ const JobDetails = ({id}) => {
         <div>
             { loading ||
 
-            <div className="mx-auto mt-10 details py-7 w-11/12 space-y-8">
+            <div className="mx-auto appear mt-10 details py-7 w-11/12 space-y-8">
 
                 <h1 className="mb-5 title text-2xl font-bold">{offer.empresa} está buscando un {offer.nombre} </h1>
 
@@ -51,7 +53,7 @@ const JobDetails = ({id}) => {
                 {offer.numeroVacantes}
 
                 <h3 className="text-xl title font-bold">Rango Salarial: </h3>
-                {offer.salarioMinimo} - {offer.salarioMaximo}
+                ${offer.salarioMinimo} - ${offer.salarioMaximo}
             </div>
         }
              
