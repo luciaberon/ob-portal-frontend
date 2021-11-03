@@ -16,16 +16,16 @@ const JobsList = () => {
     }, []);  
 
     return (
-        <div>
+        <>
             { offers && offers.map((offer) => {
                 return (
-                    <Job 
+                    <Job
                         offer={offer}
-                            key={offer.id} 
+                        key={offer.id} 
                     />
                 )})
             }
-        </div>
+        </>
     );
 }
 
