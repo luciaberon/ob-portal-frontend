@@ -30,3 +30,8 @@
 .appear {
     animation: fade 0.3s;
 }
+
+.bg-landscape {
+    background-image: url('./cool-background.png');
+    
+}

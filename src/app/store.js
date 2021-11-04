@@ -1,8 +1,12 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import OffersReducer from "../features/offers/offersSlice";
+import TechnologiesReducer from '../features/technologies/technologiesSlice';
+import filtersReducer from '../features/filters/filtersSlice';
 
 const reducer = combineReducers({
-  offers: OffersReducer
+  offers: OffersReducer,
+  technologies: TechnologiesReducer,
+  filters: filtersReducer
 })
   
 const store = configureStore({

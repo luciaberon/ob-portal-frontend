@@ -15,7 +15,7 @@ function AppRouting() {
         <Switch> 
             {/* Empty Route */}
             <Route exact path="/">
-                <div className="bg-gray-100"><Header></Header></div>
+                <div className="bg-gray-100"></div>
             </Route>
              {/* Individual Job Route */}
            <Route 

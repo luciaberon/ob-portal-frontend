@@ -7,7 +7,5 @@ const URL = "https://proyecto-ofertas-ob.herokuapp.com/api";
 
 export default axios.create({
   baseURL: URL,
-  headers: { 
-    'accept': '*/*'
-  }
+  headers: { }
 });
