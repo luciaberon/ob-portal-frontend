@@ -1,28 +1,26 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { retrieveOfferById } from '../../features/offers/offersSlice';
 
 const JobDetails = ({id}) => {
 
     const [offer, setOffer] = useState({});
-    const history = useHistory();
     const [loading, isLoading] = useState(true);
+    const history = useHistory();
     const dispatch = useDispatch()
-
     useEffect(async() => {
-        const i = await dispatch(retrieveOfferById(id));
-        setOffer(i.payload) 
+        const data = await dispatch(retrieveOfferById(id));
+        setOffer(data.payload) 
         isLoading(false)
     }, []);
 
-
-
     return (
         <div>
-            { loading ||
+            <span className="text-2xl ml-52 font-bold text-blue-500" onClick={() => history.push('/ofertas')}>ATRÁS</span>
+            { Object.keys(offer).length !== 0 &&
 
-            <div className="mx-auto appear mt-10 details py-7 w-11/12 space-y-8">
+            <div className="mx-auto appear mt-10 details py-7 px-6 shadow-2xl border rounded-sm w-11/12 space-y-8">
 
                 <h1 className="mb-5 title text-2xl font-bold">{offer.empresa} está buscando un {offer.nombre} </h1>
 

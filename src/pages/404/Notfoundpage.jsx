@@ -13,7 +13,7 @@ export default function Notfoundpage() {
                         </div>
                         <h2 class="mt-8 uppercase text-xl lg:text-5xl font-black">We are sorry, Page not found!</h2>
                         <p class="mt-6 uppercase text-sm lg:text-base text-gray-900">The page you are looking for might have been removed had its name changed or is temporarily unavailable.</p>
-                        <a href="/" class="mt-6 bg-blue-500 hover:bg-blue-700 text-white font-light py-4 px-6 rounded-full inline-block uppercase shadow-md">Back To Homepage</a>
+                        <a href="/ofertas" class="mt-6 bg-blue-500 hover:bg-blue-700 text-white font-light py-4 px-6 rounded-full inline-block uppercase shadow-md">Back To Homepage</a>
                     </div>
                 </section>
             </div>

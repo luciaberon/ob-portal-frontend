@@ -14,7 +14,7 @@ export const getOfferByID = (id) => {
 
 // Obtain Technologies
 export const getTechnologies = () => {
-    return http.get('/tecnologias');
+    return http.get('/tecnologias')
 }
 
 // Add Technoglies
