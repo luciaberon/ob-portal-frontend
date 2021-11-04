@@ -1,8 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
-import SelectSearch from 'react-select-search';
 import { useSelector, useDispatch } from 'react-redux';
-import { retrieveTechnologies } from '../../features/technologies/technologiesSlice';
 import {filterOffer} from '../../features/offers/offersSlice'
 
 const configureOptions = technologies => {
@@ -37,16 +35,7 @@ const Filter = () => {
 			configureOptions(arr);
 			setOptions(tempOptions)
 		})
-		// dispatch(retrieveTechnologies())
-		// .then(() => {
-		// 	console.log(technologies)
-		// 	console.log("Technologies",technologies)
-		// 	configureOptions(technologies)
-		// 	console.log("tempOptions",tempOptions)
-		// 	setOptions(tempOptions)
-		// 	console.log("Set options",options)
-		// })
-		//l
+		
 	}, []);
 
 	return (
