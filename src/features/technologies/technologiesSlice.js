@@ -1,7 +1,7 @@
 import { createSlice , createAsyncThunk } from '@reduxjs/toolkit'
 import { getTechnologies } from '../../services/axiosService';
 
-
+// EXPLICAR PARA QUE ES CADA CONST
 export const retrieveTechnologies = createAsyncThunk(
   "technologies/retrieve",
   async () => {

@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { retrieveOfferById } from '../../features/offers/offersSlice';
 
+// EXPLICAR ******************
 const JobDetails = ({id}) => {
 
     const [offer, setOffer] = useState({});

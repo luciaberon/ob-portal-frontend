@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import {filterOffer} from '../../features/offers/offersSlice'
 
+// EXPLICAR*********************
 const configureOptions = technologies => {
 	for (let i = 0; i < technologies.length; i++) {
 		tempOptions.push({
