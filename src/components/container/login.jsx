@@ -20,13 +20,14 @@ const Login = () => {
         })
     }
 
-    const loginUser = async() => {
-        await newUser.login(user)
+    const loginUser = () => {
+        newUser.login(user)
         setTimeout(() => {
-            if (localStorage.getItem('user')) {
+            if (localStorage.getItem('user') !== null) {
+                console.log(localStorage.getItem('user'))
                 history.push('/ofertas')
             }          
-        }, 1000);
+        }, 1500);
     }
 
     return (

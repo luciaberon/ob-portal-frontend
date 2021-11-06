@@ -61,7 +61,7 @@ const JobsList = () => {
         <>
             <Header></Header>
             <div>
-                <span className="text-xl ml-52 mr-4">Incluir:</span>     
+                <span className="text-xl ml-20 md:ml-52 mr-4">Incluir:</span>     
                 {
                     filters && filters.map((item,index) => 
                         <span 

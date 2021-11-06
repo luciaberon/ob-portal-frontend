@@ -3,7 +3,9 @@ import axios from 'axios'
 
 // Obtain all Offers
 export const getAllOffers = () => {  
+    console.log("tokennnnnnnnnn", localStorage.getItem('user'))
     return http.get('/ofertas');
+   
 } 
 
 // Obtain Offer by ID
@@ -40,7 +42,9 @@ export class AuthService {
             }  
             return response.status;
         })  
-        .catch(err => console.log(err))
+        .catch(err => {
+            console.log("FAILED FETCH")
+        })
     }
     logout() {
         localStorage.removeItem("user");
