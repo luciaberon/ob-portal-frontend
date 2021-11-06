@@ -60,7 +60,7 @@ const Register = () => {
 
                 <div className="text-white text-lg mt-6">
                     Ya tienes una cuenta?&nbsp;
-                    <a className="no-underline border-b border-blue text-blue" href="../login/">
+                    <a className="no-underline border-b border-blue text-blue"  onClick={() => history.push('/login')}>
                         Inicia sesión
                     </a>.
                 </div>

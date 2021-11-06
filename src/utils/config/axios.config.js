@@ -8,6 +8,7 @@ const URL = "https://proyecto-ofertas-ob.herokuapp.com/api";
 export default axios.create({
   baseURL: URL,
   headers: {
-      'Authorization': "Bearer" + localStorage.getItem('user')
+      'Authorization': 'Bearer ' + localStorage.getItem('user'),
+      'accept': '*/*'
    },
 });

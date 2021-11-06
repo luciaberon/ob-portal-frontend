@@ -3,7 +3,6 @@ import axios from 'axios'
 
 // Obtain all Offers
 export const getAllOffers = () => {  
-    console.log("tokennnnnnnnnn", localStorage.getItem('user'))
     return http.get('/ofertas');
    
 } 

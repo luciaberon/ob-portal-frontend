@@ -61,7 +61,7 @@ const Login = () => {
 
                 <div className="text-white text-lg mt-6">
                     No tienes una cuenta?&nbsp;
-                    <a className="no-underline border-b border-blue font-bold" href="../register/">
+                    <a className="no-underline border-b border-blue font-bold" onClick={() => history.push('/register')}>
                         Regístrate
                     </a>.
                 </div>
