@@ -1,4 +1,4 @@
-import { BrowserRouter as HashRouter, Switch, Redirect, Route } from 'react-router-dom';
+import { HashRouter, Switch, Redirect, Route } from 'react-router-dom';
 
 import Jobspage from './pages/jobs/Jobspage';
 import Notfoundpage from './pages/404/Notfoundpage';
