@@ -15,7 +15,16 @@ function AppRouting() {
     <HashRouter>
         {/* Route Switch */}
         <Switch> 
-            {/* Redirections to protect our routes */}
+            {/* Redirect if logged */}
+            <Route exact path='/'>
+              {
+              loggedIn ? 
+              (<Redirect from='/' to='/ofertas' />)
+              :
+              (<Redirect from='/' to='/login' /> )
+              }
+            </Route>
+            {/* Login */}
             <Route exact path="/login" component={Loginpage} />
             {/* Register  */}
             <Route exact path="/register" component={Registerpage} />
