@@ -24,19 +24,6 @@ const initialState = [];
 const slice = createSlice({
     name: 'offers',
     initialState,
-    reducers: {
-      filterOffer: (state,action) => {
-        let arr = state[0].filter(element => {
-            for (let j = 0; j<element.tecnologias.length;j++) {
-              if (element.tecnologias[j].nombre === action.payload) {
-                return true;
-              } 
-            }     
-            return false;     
-        });
-        return [arr];
-      },
-    },
     extraReducers: {
         [retrieveOffers.fulfilled]: (state, action) => {
           return [
@@ -51,7 +38,6 @@ const slice = createSlice({
 });
 
 const { reducer } = slice;
-export const { filterOffer } = slice.actions;
 export default reducer;
 
 

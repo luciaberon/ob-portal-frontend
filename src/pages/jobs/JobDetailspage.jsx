@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import JobDetails from '../../components/container/job_details';
 
 /**
@@ -7,7 +8,10 @@ import JobDetails from '../../components/container/job_details';
  * @returns the "single page" job
  */
 const JobDetailspage = ({id}) => {
-    console.log("ID",id)
+    const history = useHistory()
+    if (localStorage.getItem('user') === null) {
+        history.push('/login');
+    }
     return (
         <JobDetails id={id}/>
     );

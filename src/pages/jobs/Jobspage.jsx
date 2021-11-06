@@ -1,4 +1,5 @@
 import React from 'react'
+import { useHistory } from 'react-router-dom';
 import JobsList from '../../components/container/jobs_list'
 
 /**
@@ -6,6 +7,10 @@ import JobsList from '../../components/container/jobs_list'
  * @returns JobsList component
  */
 export default function Jobspage() {
+    const history = useHistory();
+    if (localStorage.getItem('user') === null) {
+        history.push('/login');
+    }
     return (
         <JobsList />
     )
