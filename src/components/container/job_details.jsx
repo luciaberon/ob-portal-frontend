@@ -6,18 +6,24 @@ import { retrieveOfferById } from '../../features/offers/offersSlice';
 const JobDetails = ({id}) => {
 
     const [offer, setOffer] = useState({});
-    const [loading, isLoading] = useState(true);
     const history = useHistory();
     const dispatch = useDispatch()
+
     useEffect(async() => {
         const data = await dispatch(retrieveOfferById(id));
         setOffer(data.payload) 
-        isLoading(false)
     }, []);
+
+    const goBack = () => {
+        history.push('/ofertas')
+        history.go(0)
+    }
 
     return (
         <div>
-            <span className="text-2xl ml-52 font-bold text-blue-500" onClick={() => history.push('/ofertas')}>ATRÁS</span>
+            <button  onClick={goBack} class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+            Volver
+            </button>
             { Object.keys(offer).length !== 0 &&
 
             <div className="mx-auto appear mt-10 details py-7 px-6 shadow-2xl border rounded-sm w-11/12 space-y-8">

@@ -1,30 +1,41 @@
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Header from './components/container/header'
+import { BrowserRouter as Router, Switch, Redirect, Route } from 'react-router-dom';
 
 import Jobspage from './pages/jobs/Jobspage';
 import Notfoundpage from './pages/404/Notfoundpage';
 import JobDetailspage from './pages/jobs/JobDetailspage';
+import Loginpage from './pages/auth/Loginpage';
+import Registerpage from './pages/auth/Registerpage';
 
 
 function AppRouting() {
 
+  const loggedIn = localStorage.getItem('user');
 
   return (
     <Router>
         {/* Route Switch */}
         <Switch> 
-            {/* Empty Route */}
-            <Route exact path="/">
-                <div className="bg-gray-100"></div>
+            {/* Redirections to protect our routes */}
+            <Route exact path='/'>
+              {
+                loggedIn ? 
+                (<Redirect from='/' to='/ofertas' />)
+                :
+                (<Redirect from='/' to='/login' /> )
+              }
             </Route>
-             {/* Individual Job Route */}
-           <Route 
+            {/* Login  */}
+            <Route exact path="/login" component={Loginpage} />
+            {/* Register  */}
+            <Route exact path="/register" component={Registerpage} />
+
+            {/* Individual Job Route */}
+            <Route 
               path='/ofertas/:id'
               render = {
                 ({match}) => (<JobDetailspage id={match.params.id} />)
               }
             >
-
             </Route>
             {/* Jobs Route */}
             <Route path='/ofertas' component={ Jobspage } />

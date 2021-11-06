@@ -20,6 +20,7 @@
     "react-scripts": "4.0.3",
     "react-select-search": "^3.0.8",
     "react-transition-group": "^4.4.2",
+    "react-tsparticles": "^1.37.2",
     "react-typewriter-effect": "^1.1.0",
     "redux-saga": "^1.1.3",
     "web-vitals": "^1.0.1"

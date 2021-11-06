@@ -1,53 +1,24 @@
-import React, {useEffect, useState} from 'react';
-import axios from 'axios';
-import SelectSearch from 'react-select-search';
+import React, {useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { retrieveTechnologies } from '../../features/technologies/technologiesSlice';
-import {filterOffer} from '../../features/offers/offersSlice'
-
-const configureOptions = technologies => {
-	for (let i = 0; i < technologies.length; i++) {
-		tempOptions.push({
-			"name": technologies[i].nombre,
-		})
-	}			
-}
-const tempOptions = [];
+import { addFilter } from '../../features/filters/filtersSlice';
 
 
 const Filter = () => {
 
 	const dispatch = useDispatch();
-	const [options, setOptions] = useState([])
-    const technologies = useSelector(state => state.technologies[0]);
+	const technologies = useSelector(state => state.technologies[0])
+	useEffect(() => {					
+		dispatch(retrieveTechnologies()) 	
+	}, []);
 
-	const updateFilter = e => {
-		for (let i = 0; i<options.length; i++) {
-			if (options[i].name === e.target.value) {
-				dispatch(filterOffer(e.target.value))
+	const newFilter = e => {		
+		for (let i = 0; i<technologies.length; i++) {
+			if (e.target.value === technologies[i].nombre) {
+				dispatch(addFilter(e.target.value))				
 			}
 		}
 	}
-
-	useEffect(() => {
-		let arr = [];
-		axios.get("https://proyecto-ofertas-ob.herokuapp.com/api/tecnologias")
-		.then(res => {
-			arr = res.data;
-			configureOptions(arr);
-			setOptions(tempOptions)
-		})
-		// dispatch(retrieveTechnologies())
-		// .then(() => {
-		// 	console.log(technologies)
-		// 	console.log("Technologies",technologies)
-		// 	configureOptions(technologies)
-		// 	console.log("tempOptions",tempOptions)
-		// 	setOptions(tempOptions)
-		// 	console.log("Set options",options)
-		// })
-		//l
-	}, []);
 
 	return (
 		<div>
@@ -55,17 +26,17 @@ const Filter = () => {
 				<h1 className="text-3xl text-white font-bold">Remote | OK</h1>
 			</div>
 			<div className="mx-auto w-min">
-			<input className="p-3 rounded-full" onInput={e => updateFilter(e)} list="options"></input>
+			<input onChange={e => newFilter(e)} className="p-3 rounded-full" list="options"></input>
 			<datalist name="options" id="options">
-				{
-					options && options.map(option => {
-						return (
-							<option key={option.id} value={option.name}>
-								{option.name}
-							</option>
-						)
-					})
-				}
+				{technologies && technologies.map(item => (
+					<option 
+						className="cursor-pointer" 
+						value={item.nombre}
+						key={item.id}
+					>
+					</option>
+				))}
+				
 			</datalist>
 			</div>
 		</div>

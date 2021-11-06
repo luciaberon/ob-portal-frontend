@@ -1,6 +1,7 @@
-import { useEffect } from 'react';
+import { useEffect, useState} from 'react';
 import Job from './job';
 import { retrieveOffers } from '../../features/offers/offersSlice';
+import { removeFilter } from '../../features/filters/filtersSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import Header from './header';
 
@@ -9,18 +10,64 @@ import Header from './header';
  * @returns List of all job offers
  */
 const JobsList = () => {
-    const offers = useSelector(state => state.offers[0]);
+    let offers = useSelector(state => state.offers[0]);
+    let filters = useSelector(state => state.filters) ;
+    const [list,setList] = useState([]);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(retrieveOffers());        
+        dispatch(retrieveOffers());    
+        setList(offers)
     }, []);  
+
+    useEffect(() => {
+        setList(offers)
+    }, [offers]);
+
+    useEffect(() => {
+        const filteredList = filterList();
+        setList(filteredList);
+    }, [filters]);
+
+    const deleteFilter = (item) => {
+        dispatch(removeFilter(item));        
+    }
+
+    const filterList = () => {
+        let arr = [];
+        if (offers && filters.length !== 0) {
+            arr = offers.filter(item => {
+                for (let i = 0; i<item.tecnologias.length; i++) {
+                    for (let j = 0; j<filters.length; j++) {
+                        if (item.tecnologias[i].nombre === filters[j]) {
+                            return true;
+                        }
+                    }                    
+                }
+                return false;
+            })
+        return arr;
+        } else {
+            return offers;
+    }}
 
     return (
         <>
             <Header></Header>
-            <span className="ml-56 font-bold text-xl">Filters: ***</span>
-            { offers && offers.map((offer) => {
+            <div>
+                <span className="text-xl ml-52 mr-4">Incluir:</span>     
+                {
+                    filters && filters.map((item,index) => 
+                        <span 
+                            key={index}
+                            onClick={() => deleteFilter(item)}
+                            className="inline-flex items-center cursor-pointer justify-center px-2 py-1 mr-2 text-sm font-bold leading-none text-red-100 bg-red-600 rounded-full">
+                                {item} &#10005;
+                        </span>
+                    )
+                }
+            </div>
+            { list && list.map((offer) => {
                 return (
                     <Job
                         offer={offer}

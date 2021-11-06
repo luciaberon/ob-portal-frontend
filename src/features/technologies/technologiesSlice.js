@@ -5,13 +5,10 @@ import { getTechnologies } from '../../services/axiosService';
 export const retrieveTechnologies = createAsyncThunk(
   "technologies/retrieve",
   async () => {
-    getTechnologies()
-    .then(res => {
-        return res.data;
-    })
+    const res = await getTechnologies();
+    return res.data;
   }
 );
-
 
 const initialState = [];
 
