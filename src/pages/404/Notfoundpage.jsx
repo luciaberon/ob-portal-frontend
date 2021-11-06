@@ -1,5 +1,10 @@
 import React from 'react'
 
+
+/**
+ * 404 ERROR
+ * @returns A PAGE FOR NOT FOUND PAGES
+ */
 export default function Notfoundpage() {
     return (
         <div class="bg-gray-100">
