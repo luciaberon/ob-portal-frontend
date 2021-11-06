@@ -37,19 +37,25 @@ const JobsList = () => {
         let arr = [];
         if (offers && filters.length !== 0) {
             arr = offers.filter(item => {
-                for (let i = 0; i<item.tecnologias.length; i++) {
-                    for (let j = 0; j<filters.length; j++) {
+                let coincidences = 0;
+                for (let j = 0; j<filters.length; j++) {                    
+                    for (let i = 0; i<item.tecnologias.length; i++) {
                         if (item.tecnologias[i].nombre === filters[j]) {
-                            return true;
-                        }
-                    }                    
+                            coincidences = coincidences + 1;
+                        } 
+                    } 
                 }
-                return false;
+                if (coincidences === filters.length) {
+                    return true;
+                }
+                return false;                   
             })
         return arr;
+        
         } else {
             return offers;
-    }}
+        }
+    }
 
     return (
         <>

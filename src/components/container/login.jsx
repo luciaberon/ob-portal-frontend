@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { useHistory } from 'react-router';
 import { AuthService } from '../../services/axiosService';
 
@@ -12,6 +12,7 @@ const Login = () => {
         password:''
     })
 
+
     const updateUser = e => {
         setUser({
             ...user,
@@ -19,11 +20,13 @@ const Login = () => {
         })
     }
 
-    const loginUser = () => {
-        newUser.login(user)
-        if (localStorage.getItem('user') !== null) {
-            history.push('/ofertas');
-        }
+    const loginUser = async() => {
+        await newUser.login(user)
+        setTimeout(() => {
+            if (localStorage.getItem('user')) {
+                history.push('/ofertas')
+            }          
+        }, 1000);
     }
 
     return (

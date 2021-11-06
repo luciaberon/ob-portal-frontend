@@ -1,4 +1,4 @@
-import { HashRouter, Switch, Redirect, Route } from 'react-router-dom';
+import { HashRouter, Switch, Route } from 'react-router-dom';
 
 import Jobspage from './pages/jobs/Jobspage';
 import Notfoundpage from './pages/404/Notfoundpage';
@@ -16,15 +16,6 @@ function AppRouting() {
         {/* Route Switch */}
         <Switch> 
             {/* Redirections to protect our routes */}
-            <Route exact path='/'>
-              {
-                loggedIn ? 
-                (<Redirect from='/' to='/ofertas' />)
-                :
-                (<Redirect from='/' to='/login' /> )
-              }
-            </Route>
-            {/* Login  */}
             <Route exact path="/login" component={Loginpage} />
             {/* Register  */}
             <Route exact path="/register" component={Registerpage} />
