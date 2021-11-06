@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Switch, Redirect, Route } from 'react-router-dom';
+import { BrowserRouter as HashRouter, Switch, Redirect, Route } from 'react-router-dom';
 
 import Jobspage from './pages/jobs/Jobspage';
 import Notfoundpage from './pages/404/Notfoundpage';
@@ -12,7 +12,7 @@ function AppRouting() {
   const loggedIn = localStorage.getItem('user');
 
   return (
-    <Router>
+    <HashRouter>
         {/* Route Switch */}
         <Switch> 
             {/* Redirections to protect our routes */}
@@ -42,7 +42,7 @@ function AppRouting() {
             {/* 404 - Page No Found */}
             <Route component={ Notfoundpage } />
         </Switch>
-    </Router>
+    </HashRouter>
   );
 }
 
