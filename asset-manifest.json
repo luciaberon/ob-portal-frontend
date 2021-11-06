@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/ob-portal-frontend/static/css/main.57dbd479.chunk.css",
+    "main.js": "/ob-portal-frontend/static/js/main.565fc9d7.chunk.js",
+    "main.js.map": "/ob-portal-frontend/static/js/main.565fc9d7.chunk.js.map",
+    "runtime-main.js": "/ob-portal-frontend/static/js/runtime-main.baa283f7.js",
+    "runtime-main.js.map": "/ob-portal-frontend/static/js/runtime-main.baa283f7.js.map",
+    "static/css/2.81764713.chunk.css": "/ob-portal-frontend/static/css/2.81764713.chunk.css",
+    "static/js/2.1cf946bb.chunk.js": "/ob-portal-frontend/static/js/2.1cf946bb.chunk.js",
+    "static/js/2.1cf946bb.chunk.js.map": "/ob-portal-frontend/static/js/2.1cf946bb.chunk.js.map",
+    "index.html": "/ob-portal-frontend/index.html",
+    "static/css/2.81764713.chunk.css.map": "/ob-portal-frontend/static/css/2.81764713.chunk.css.map",
+    "static/css/main.57dbd479.chunk.css.map": "/ob-portal-frontend/static/css/main.57dbd479.chunk.css.map",
+    "static/js/2.1cf946bb.chunk.js.LICENSE.txt": "/ob-portal-frontend/static/js/2.1cf946bb.chunk.js.LICENSE.txt",
+    "static/media/bootstrap-icons.css": "/ob-portal-frontend/static/media/bootstrap-icons.d0ec932c.woff2",
+    "static/media/App.css": "/ob-portal-frontend/static/media/cool-background.0b2db0ed.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.baa283f7.js",
+    "static/css/2.81764713.chunk.css",
+    "static/js/2.1cf946bb.chunk.js",
+    "static/css/main.57dbd479.chunk.css",
+    "static/js/main.565fc9d7.chunk.js"
+  ]
+}
