@@ -1,11 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import { useHistory } from 'react-router';
-import { useDispatch } from 'react-redux';
-import { login } from '../../features/auth/authSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { checkLogged, login } from '../../features/auth/authSlice';
 
 const Login = () => {
 
     const history = useHistory();
+    const state = useSelector(state => state.auth.isLoggedIn)
+    console.log(state)
     const dispatch = useDispatch()
 
     const [user,setUser] = useState({
@@ -21,7 +23,9 @@ const Login = () => {
     }
 
     const loginUser = () => {
-        dispatch(login(user))    
+        dispatch(login(user))            
+        dispatch(checkLogged()) 
+        console.log(state)
     }
 
     return (
@@ -55,7 +59,7 @@ const Login = () => {
 
                 <div className="text-white text-lg mt-6">
                     No tienes una cuenta?&nbsp;
-                    <a className="no-underline border-b border-blue font-bold" onClick={() => history.push('/register')}>
+                    <a className="no-underline cursor-pointer border-b border-blue font-bold" onClick={() => history.push('/register')}>
                         Regístrate
                     </a>.
                 </div>

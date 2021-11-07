@@ -18,7 +18,11 @@ export const retrieveOfferById = createAsyncThunk(
 }
 );
 
-const initialState = [];
+const initialState = {
+  offers: [],
+  isLoading: false,
+  offer:{}
+}
 
 // Slice
 const slice = createSlice({
@@ -26,14 +30,32 @@ const slice = createSlice({
     initialState,
     extraReducers: {
         [retrieveOffers.fulfilled]: (state, action) => {
-          return [
+          return {
             ...state,
-            action.payload
-          ]
+            isLoading: false,
+            offers: action.payload
+          }
         },
         [retrieveOfferById.fulfilled]: (state, action) => {
-          return [action.payload];
-        },        
+          console.log("PAYLOAD",action.payload)
+          return {
+            ...state,
+            isLoading:false,
+            offer:action.payload
+          };
+        },     
+        [retrieveOfferById.pending]: (state) => {
+          return {
+            ...state,
+            isLoading:true
+          }
+        },
+        [retrieveOffers.pending]: (state) => {
+          return {
+            ...state,
+            isLoading: true
+          }
+        }
     }
 });
 

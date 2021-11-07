@@ -1,23 +1,12 @@
 import http from '../utils/config/axios.config';
 import axios from 'axios';
-import Cookies from 'js-cookie';
 
-
-// http.interceptors.request.use(request => {
-//     console.log("TOKEN",localStorage.getItem('user'))
-//     console.log('Starting Request', JSON.stringify(request, null, 2))
-//     return request
-//   })
-  
-//   http.interceptors.response.use(response => {
-//     console.log('Response:', JSON.stringify(response, null, 2))
-//     return response
-//   })
 
 // Obtain all Offers
 export const getAllOffers = () => {  
     return http.get('/ofertas');           
 } 
+
 
 // Obtain Offer by ID
 export const getOfferByID = (id) => {
@@ -49,7 +38,8 @@ const login = data => {
     })  
     .then(response => {
         if (response.data.token) {
-            Cookies.set('user',response.data.token);
+            console.log("token login",response.data.token)
+            localStorage.setItem("user",response.data.token)
         }  
         })  
         .catch(err => {
@@ -58,7 +48,7 @@ const login = data => {
 }
 
 const logout = () => {
-    Cookies.remove('user');
+    localStorage.removeItem('user')
 }
 
 

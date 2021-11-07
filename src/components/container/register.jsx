@@ -3,7 +3,6 @@ import { useHistory } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { register } from '../../features/auth/authSlice';
 
-
 const Register = () => {
     
     const history = useHistory();
@@ -14,6 +13,7 @@ const Register = () => {
         email:''
     })
 
+
     const updateUser = e => {
         setUser({
             ...user,
@@ -23,6 +23,7 @@ const Register = () => {
 
     const registerUser = () => {
         dispatch(register(user));
+        history.push('/login')
     }
 
     return (
@@ -60,7 +61,7 @@ const Register = () => {
 
                 <div className="text-white text-lg mt-6">
                     Ya tienes una cuenta?&nbsp;
-                    <a className="no-underline border-b border-blue text-blue"  onClick={() => history.push('/login')}>
+                    <a className="no-underline cursor-pointer border-b border-blue font-bold text-blue"  onClick={() => history.push('/login')}>
                         Inicia sesión
                     </a>.
                 </div>

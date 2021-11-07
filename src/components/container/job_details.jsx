@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import ReactLoading from 'react-loading';
 import { useHistory } from 'react-router-dom';
 import { retrieveOfferById } from '../../features/offers/offersSlice';
 
 // EXPLICAR ******************
 const JobDetails = ({id}) => {
 
-    const [offer, setOffer] = useState({});
     const history = useHistory();
+    const offer = useSelector(state => state.offers.offer)
+    const loading = useSelector(state => state.offers.isLoading)
     const dispatch = useDispatch()
-
-    useEffect(async() => {
-        const data = await dispatch(retrieveOfferById(id));
-        setOffer(data.payload) 
+    console.log(offer)
+    useEffect(() => {
+        dispatch(retrieveOfferById(id));
     }, []);
 
     const goBack = () => {
@@ -25,7 +26,11 @@ const JobDetails = ({id}) => {
             <button  onClick={goBack} class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
             Volver
             </button>
-            { Object.keys(offer).length !== 0 &&
+            { loading ? 
+
+            <ReactLoading className="spinner" type={"spin"} color={"blue"} height={50} width={50} />
+                
+            :
 
             <div className="mx-auto appear mt-10 details py-7 px-6 shadow-2xl border rounded-sm md:w-11/12 w-full space-y-8">
 
@@ -36,7 +41,8 @@ const JobDetails = ({id}) => {
 
                 <div>
                     <h3 className="text-xl title font-bold">Tecnologías:</h3>
-                    {
+                    {   offer.tecnologias &&
+
                         offer.tecnologias.map((item) => 
                             <li key={item.id}>{item.nombre}</li>
                         )

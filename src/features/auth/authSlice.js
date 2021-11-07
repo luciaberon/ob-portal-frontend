@@ -30,6 +30,15 @@ let initialState = {
 const slice = createSlice({
     name: 'auth',
     initialState,
+    reducers: {
+        checkLogged: (state) => {
+            if (localStorage.getItem('user')) {
+                state.isLoggedIn = true;
+            } else {
+                state.isLoggedIn = false;
+            }
+        }
+    },
     extraReducers: {
         [login.fulfilled]: (state) => {
             state.isLoggedIn = true;
@@ -45,5 +54,4 @@ const slice = createSlice({
 
 const { reducer } = slice;
 export default reducer;
-
-
+export const { checkLogged } = slice.actions;

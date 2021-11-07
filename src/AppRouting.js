@@ -1,6 +1,8 @@
 import { HashRouter, Switch, Route, Redirect } from 'react-router-dom';
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { checkLogged } from './features/auth/authSlice'
+
+import { useSelector, useDispatch } from 'react-redux';
 
 import Jobspage from './pages/jobs/Jobspage';
 import Notfoundpage from './pages/404/Notfoundpage';
@@ -10,8 +12,13 @@ import Registerpage from './pages/auth/Registerpage';
 
 
 function AppRouting() {
-
+  const dispatch = useDispatch();
   const auth = useSelector(state => state.auth.isLoggedIn);
+  useEffect(() => {
+    dispatch(checkLogged())  
+  }, [])
+
+  console.log(auth)
 
   return (
     <HashRouter>
