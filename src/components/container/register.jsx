@@ -1,12 +1,13 @@
 import React, {useState} from 'react';
-import { AuthService } from '../../services/axiosService';
 import { useHistory } from 'react-router';
+import { useDispatch } from 'react-redux';
+import { register } from '../../features/auth/authSlice';
 
 
 const Register = () => {
     
     const history = useHistory();
-    const newUser = new AuthService();
+    const dispatch = useDispatch();
     const [user,setUser] = useState({
         username:'',
         password:'',
@@ -21,8 +22,7 @@ const Register = () => {
     }
 
     const registerUser = () => {
-        newUser.register(user)
-        history.push('/login')
+        dispatch(register(user));
     }
 
     return (

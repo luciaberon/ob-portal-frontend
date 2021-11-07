@@ -1,17 +1,17 @@
 import React, {useState, useEffect} from 'react';
 import { useHistory } from 'react-router';
-import { AuthService } from '../../services/axiosService';
+import { useDispatch } from 'react-redux';
+import { login } from '../../features/auth/authSlice';
 
 const Login = () => {
 
-    const newUser = new AuthService();
     const history = useHistory();
+    const dispatch = useDispatch()
 
     const [user,setUser] = useState({
         username:'',
         password:''
     })
-
 
     const updateUser = e => {
         setUser({
@@ -21,13 +21,7 @@ const Login = () => {
     }
 
     const loginUser = () => {
-        newUser.login(user)
-        setTimeout(() => {
-            if (localStorage.getItem('user') !== null) {
-                console.log(localStorage.getItem('user'))
-                history.push('/ofertas')
-            }          
-        }, 1500);
+        dispatch(login(user))    
     }
 
     return (

@@ -18,6 +18,12 @@
     width: 70%;
 }
 
+@media (max-width:768px) {
+    .details {
+        width:90%;
+    }
+}
+
 .title {
     font-family: 'Varela Round';
 }

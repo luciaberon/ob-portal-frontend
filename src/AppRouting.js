@@ -1,4 +1,6 @@
 import { HashRouter, Switch, Route, Redirect } from 'react-router-dom';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 import Jobspage from './pages/jobs/Jobspage';
 import Notfoundpage from './pages/404/Notfoundpage';
@@ -9,25 +11,17 @@ import Registerpage from './pages/auth/Registerpage';
 
 function AppRouting() {
 
-  const loggedIn = localStorage.getItem('user');
+  const auth = useSelector(state => state.auth.isLoggedIn);
 
   return (
     <HashRouter>
         {/* Route Switch */}
         <Switch> 
-            {/* Redirect if logged */}
-            <Route exact path='/'>
-              {
-              loggedIn ? 
-              (<Redirect from='/' to='/ofertas' />)
-              :
-              (<Redirect from='/' to='/login' /> )
-              }
-            </Route>
+            <ProtectedRoute exact path="/" component={ Jobspage } auth={auth} />
             {/* Login */}
-            <Route exact path="/login" component={Loginpage} />
+            <ProtectedAuth path="/login" component={Loginpage} auth={auth} />
             {/* Register  */}
-            <Route exact path="/register" component={Registerpage} />
+            <ProtectedAuth path="/register" component={Registerpage} auth={auth} />
 
             {/* Individual Job Route */}
             <Route 
@@ -38,7 +32,7 @@ function AppRouting() {
             >
             </Route>
             {/* Jobs Route */}
-            <Route path='/ofertas' component={ Jobspage } />
+            <ProtectedRoute path="/ofertas" component={ Jobspage } auth={auth} />
             {/* 404 - Page No Found */}
             <Route component={ Notfoundpage } />
         </Switch>
@@ -46,4 +40,33 @@ function AppRouting() {
   );
 }
 
+const ProtectedRoute = ({auth,component:Component,...rest}) => {  
+  return (
+    <Route
+    {...rest}
+    render={() => auth ? (
+      <Component />
+    ): 
+      (
+        <Redirect to="/login" />   
+      )
+    }
+    />
+  )
+}
+
+const ProtectedAuth = ({auth,component:Component,...rest}) => {
+  return (
+    <Route
+    {...rest}
+    render={() => !auth ? (
+      <Component />
+    ): 
+      (
+        <Redirect to="/ofertas" />   
+      )
+    }
+    />
+  )
+}
 export default AppRouting;

@@ -27,7 +27,7 @@ const JobDetails = ({id}) => {
             </button>
             { Object.keys(offer).length !== 0 &&
 
-            <div className="mx-auto appear mt-10 details py-7 px-6 shadow-2xl border rounded-sm w-11/12 space-y-8">
+            <div className="mx-auto appear mt-10 details py-7 px-6 shadow-2xl border rounded-sm md:w-11/12 w-full space-y-8">
 
                 <h1 className="mb-5 title text-2xl font-bold">{offer.empresa} está buscando un {offer.nombre} </h1>
 
