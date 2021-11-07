@@ -31,13 +31,13 @@ function AppRouting() {
             <ProtectedAuth path="/register" component={Registerpage} auth={auth} />
 
             {/* Individual Job Route */}
-            <Route 
+            <ProtectedRoute 
               path='/ofertas/:id'
               render = {
                 ({match}) => (<JobDetailspage id={match.params.id} />)
               }
             >
-            </Route>
+            </ProtectedRoute>
             {/* Jobs Route */}
             <ProtectedRoute path="/ofertas" component={ Jobspage } auth={auth} />
             {/* 404 - Page No Found */}
