@@ -11,14 +11,13 @@ const JobDetails = ({id}) => {
     const offer = useSelector(state => state.offers.offer)
     const loading = useSelector(state => state.offers.isLoading)
     const dispatch = useDispatch()
-    console.log(offer)
+
     useEffect(() => {
         dispatch(retrieveOfferById(id));
     }, []);
 
     const goBack = () => {
         history.push('/ofertas')
-        history.go(0)
     }
 
     return (
