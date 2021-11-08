@@ -7,6 +7,20 @@ export const getAllOffers = () => {
     return http.get('/ofertas');           
 } 
 
+http.interceptors.request.use(function (config) {
+    let token = localStorage.getItem('user')
+
+    if (token) {
+        config.headers.Authorization = `Bearer ${token}`
+    }
+
+
+    return config;
+  }, function (error) {
+    // Do something with request error
+    return Promise.reject(error);
+  });
+
 
 // Obtain Offer by ID
 export const getOfferByID = (id) => {
@@ -31,20 +45,15 @@ const headers = {
 }
 
 
-const login = data => {
-    
-    axios.post('https://proyecto-ofertas-ob.herokuapp.com/api/login', data, {
+const login = async (data) => {
+
+    const response = await axios.post('https://proyecto-ofertas-ob.herokuapp.com/api/login', data, {
         headers: headers,
     })  
-    .then(response => {
-        if (response.data.token) {
-            console.log("token login",response.data.token)
-            localStorage.setItem("user",response.data.token)
-        }  
-        })  
-        .catch(err => {
-            console.log(err)
-        })
+
+    if (response.data.token) {
+        localStorage.setItem("user",response.data.token)
+    }
 }
 
 const logout = () => {

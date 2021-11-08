@@ -5,7 +5,7 @@ import { authService } from '../../services/axiosService';
 export const login = createAsyncThunk(
     "auth/login",
     async (data) => {
-      authService.login(data);
+      await authService.login(data);
     }
   );
 

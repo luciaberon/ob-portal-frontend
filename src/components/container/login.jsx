@@ -1,13 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import { useHistory } from 'react-router';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { checkLogged, login } from '../../features/auth/authSlice';
 
 const Login = () => {
 
     const history = useHistory();
-    const state = useSelector(state => state.auth.isLoggedIn)
-    console.log(state)
+
     const dispatch = useDispatch()
 
     const [user,setUser] = useState({
@@ -25,7 +24,6 @@ const Login = () => {
     const loginUser = () => {
         dispatch(login(user))            
         dispatch(checkLogged()) 
-        console.log(state)
     }
 
     return (

@@ -67,16 +67,20 @@ const JobsList = () => {
         <>
             <Header></Header>
             <div>
-                { isLoading || <span className="text-xl ml-20 md:ml-52 mr-4">Incluir:</span>}    
-                { 
-                    filters && filters.filter(onlyUnique).map((item,index) => 
-                    <span 
-                        key={index}
-                        onClick={() => deleteFilter(item)}
-                        className="inline-flex items-center cursor-pointer justify-center px-2 py-1 mr-2 text-sm font-bold leading-none text-red-100 bg-red-600 rounded-full">
-                            {item} &#10005;
-                    </span>
-                    )
+                { isLoading ||
+                    <div>                 
+                        <span className="text-xl ml-20 md:ml-52 mr-4">Incluir:</span> 
+                        { 
+                            filters && filters.filter(onlyUnique).map((item,index) => 
+                            <span 
+                                key={index}
+                                onClick={() => deleteFilter(item)}
+                                className="inline-flex items-center cursor-pointer justify-center px-2 py-1 mr-2 text-sm font-bold leading-none text-red-100 bg-red-600 rounded-full">
+                                    {item} &#10005;
+                            </span>
+                            )
+                        }
+                    </div>
                 }
             </div>
             { 
@@ -86,13 +90,13 @@ const JobsList = () => {
                 
                 : 
 
-                list.map((offer) => {
+                list && list.map((offer) => {
                     return (
                         <Job
                             offer={offer}
                             key={offer.id} 
                         />
-                    )})
+                )})
             }
         </>
     );
