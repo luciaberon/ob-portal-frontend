@@ -1,5 +1,6 @@
 import { useEffect, useState} from 'react';
 import Job from './job';
+import { filterList } from '../../utils/filter';
 import ReactLoading from 'react-loading';
 import { retrieveOffers } from '../../features/offers/offersSlice';
 import { removeFilter } from '../../features/filters/filtersSlice';
@@ -27,7 +28,7 @@ const JobsList = () => {
     }, [offers]);
 
     useEffect(() => {
-        const filteredList = filterList();
+        const filteredList = filterList(offers,filters);
         setList(filteredList);
     }, [filters]);
 
@@ -37,30 +38,6 @@ const JobsList = () => {
 
     function onlyUnique(value, index, self) {
         return self.indexOf(value) === index;
-    }
-      
-    const filterList = () => {
-        let arr = [];
-        if (offers && filters.length !== 0) {
-            arr = offers.filter(item => {
-                let coincidences = 0;
-                for (let j = 0; j<filters.length; j++) {                    
-                    for (let i = 0; i<item.tecnologias.length; i++) {
-                        if (item.tecnologias[i].nombre === filters[j]) {
-                            coincidences = coincidences + 1;
-                        } 
-                    } 
-                }
-                if (coincidences === filters.length) {
-                    return true;
-                }
-                return false;                   
-            })
-        return arr;
-        
-        } else {
-            return offers;
-        }
     }
 
     return (
