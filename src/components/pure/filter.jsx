@@ -26,11 +26,10 @@ const Filter = () => {
 				<h1 className="text-3xl text-white font-bold">Remote | OK</h1>
 			</div>
 			<div className="mx-auto w-min">
-			<input onChange={e => newFilter(e)} className="p-3 rounded-full" list="options"></input>
+			<input onChange={e => newFilter(e)} className="p-3 outline rounded-full" list="options"></input>
 			<datalist name="options" id="options">
 				{technologies && technologies.map(item => (
 					<option 
-						className="cursor-pointer" 
 						value={item.nombre}
 						key={item.id}
 					>

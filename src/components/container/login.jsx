@@ -1,11 +1,13 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { useHistory } from 'react-router';
-import { AuthService } from '../../services/axiosService';
+import { useDispatch } from 'react-redux';
+import { checkLogged, login } from '../../features/auth/authSlice';
 
 const Login = () => {
 
-    const newUser = new AuthService();
     const history = useHistory();
+
+    const dispatch = useDispatch()
 
     const [user,setUser] = useState({
         username:'',
@@ -20,10 +22,8 @@ const Login = () => {
     }
 
     const loginUser = () => {
-        newUser.login(user)
-        if (localStorage.getItem('user') !== null) {
-            history.push('/ofertas');
-        }
+        dispatch(login(user))            
+        dispatch(checkLogged()) 
     }
 
     return (
@@ -57,7 +57,7 @@ const Login = () => {
 
                 <div className="text-white text-lg mt-6">
                     No tienes una cuenta?&nbsp;
-                    <a className="no-underline border-b border-blue font-bold" href="../register/">
+                    <a className="no-underline cursor-pointer border-b border-blue font-bold" onClick={() => history.push('/register')}>
                         Regístrate
                     </a>.
                 </div>

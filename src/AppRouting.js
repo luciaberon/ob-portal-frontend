@@ -1,4 +1,8 @@
-import { BrowserRouter as Router, Switch, Redirect, Route } from 'react-router-dom';
+import { HashRouter, Switch, Route, Redirect } from 'react-router-dom';
+import { useEffect } from 'react';
+import { checkLogged } from './features/auth/authSlice'
+
+import { useSelector, useDispatch } from 'react-redux';
 
 import Jobspage from './pages/jobs/Jobspage';
 import Notfoundpage from './pages/404/Notfoundpage';
@@ -8,29 +12,24 @@ import Registerpage from './pages/auth/Registerpage';
 
 
 function AppRouting() {
-
-  const loggedIn = localStorage.getItem('user');
+  const dispatch = useDispatch();
+  const auth = useSelector(state => state.auth.isLoggedIn);
+  useEffect(() => {
+    dispatch(checkLogged())  
+  }, [])
 
   return (
-    <Router>
+    <HashRouter>
         {/* Route Switch */}
         <Switch> 
-            {/* Redirections to protect our routes */}
-            <Route exact path='/'>
-              {
-                loggedIn ? 
-                (<Redirect from='/' to='/ofertas' />)
-                :
-                (<Redirect from='/' to='/login' /> )
-              }
-            </Route>
-            {/* Login  */}
-            <Route exact path="/login" component={Loginpage} />
+            <ProtectedRoute exact path="/" component={ Jobspage } auth={auth} />
+            {/* Login */}
+            <ProtectedAuth path="/login" component={Loginpage} auth={auth} />
             {/* Register  */}
-            <Route exact path="/register" component={Registerpage} />
+            <ProtectedAuth path="/register" component={Registerpage} auth={auth} />
 
             {/* Individual Job Route */}
-            <Route 
+            <Route auth={auth} 
               path='/ofertas/:id'
               render = {
                 ({match}) => (<JobDetailspage id={match.params.id} />)
@@ -38,12 +37,41 @@ function AppRouting() {
             >
             </Route>
             {/* Jobs Route */}
-            <Route path='/ofertas' component={ Jobspage } />
+            <ProtectedRoute path="/ofertas" component={ Jobspage } auth={auth} />
             {/* 404 - Page No Found */}
             <Route component={ Notfoundpage } />
         </Switch>
-    </Router>
+    </HashRouter>
   );
 }
 
+const ProtectedRoute = ({auth,component:Component,...rest}) => {  
+  return (
+    <Route
+    {...rest}
+    render={() => auth ? (
+      <Component />
+    ): 
+      (
+        <Redirect to="/login" />   
+      )
+    }
+    />
+  )
+}
+
+const ProtectedAuth = ({auth,component:Component,...rest}) => {
+  return (
+    <Route
+    {...rest}
+    render={() => !auth ? (
+      <Component />
+    ): 
+      (
+        <Redirect to="/ofertas" />   
+      )
+    }
+    />
+  )
+}
 export default AppRouting;

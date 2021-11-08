@@ -8,10 +8,6 @@ import JobDetails from '../../components/container/job_details';
  * @returns the "single page" job
  */
 const JobDetailspage = ({id}) => {
-    const history = useHistory()
-    if (localStorage.getItem('user') === null) {
-        history.push('/login');
-    }
     return (
         <JobDetails id={id}/>
     );
